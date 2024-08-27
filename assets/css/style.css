@@ -1,0 +1,32 @@
+/* login btn */
+
+
+.btn-outline-success {
+    margin-top: 20px;
+    border-color: #28a745; /* Custom border color */
+    color: #28a745;        /* Custom text color */
+    padding: 10px 20px;    /* Custom padding */
+    border-radius: 8px;    /* Custom border radius */
+    font-weight: bold;     /* Custom font weight */
+}
+
+/* Custom styles for .btn-outline-success when hovered */
+.btn-outline-success:hover {
+    background-color: #28a745; /* Custom background color on hover */
+    color: #fff;                /* Custom text color on hover */
+    border-color: #28a745;     /* Custom border color on hover */
+}
+
+/* Additional custom styles for .login class */
+.btn-outline-success.login {
+    font-size: 16px;          /* Custom font size */
+    text-transform: uppercase; /* Custom text transformation */
+}
+.btn-outline-success.login>a{
+    text-decoration: none;
+    color: black;
+    padding: 5px 125px 5px 125px;
+}
+.btn-outline-success.login>a:hover{
+    color: #fff;
+}
