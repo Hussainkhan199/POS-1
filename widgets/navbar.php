@@ -241,7 +241,7 @@
                         <div class="u-text">
                         <?php echo $_SESSION['username']; ?>
                           <br/>
-                          <a href="profile.php" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+                          <a href="./widgets/profile.php" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
                         </div>
                       </div>
                     </li>

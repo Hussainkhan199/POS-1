@@ -1,6 +1,9 @@
-<?php include '../head.php' ?>
+<?php include '../head.php'; ?>
+
 
 
 <body>
-    <?php include 'sidebar.php' ?>
+
+<?php include './sidebar.php'?>
+
 </body>
