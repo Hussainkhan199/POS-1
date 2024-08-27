@@ -172,7 +172,7 @@
                             <div class="avatar-item bg-danger rounded-circle">
                               <i class="far fa-calendar-alt"></i>
                             </div>
-                            <span class="text">Calendar</span>
+                            <span class="text">Calendar</span> 
                           </div>
                         </a>
                         <a class="col-6 col-md-4 p-0" href="#">
@@ -228,7 +228,7 @@
                   </div>
                   <span class="profile-username">
                     <span class="op-7">Hi,</span>
-                    <span class="fw-bold">Hizrian</span>
+                    <?php echo $_SESSION['username']; ?>
                   </span>
                 </a>
                 <ul class="dropdown-menu dropdown-user animated fadeIn">
@@ -239,9 +239,9 @@
                           <img src="assets/img/profile.jpg" alt="image profile" class="avatar-img rounded" />
                         </div>
                         <div class="u-text">
-                          <h4>Hizrian</h4>
-                          <p class="text-muted">hello@example.com</p>
-                          <a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+                        <?php echo $_SESSION['username']; ?>
+                          <br/>
+                          <a href="profile.php" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
                         </div>
                       </div>
                     </li>
