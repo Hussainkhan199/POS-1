@@ -1,3 +1,21 @@
+<?php
+// Include the database configuration file
+include './config/database.php';
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+
+// Fetch user data from database
+$user_id = $_SESSION['user_id']; // Assuming user_id is stored in session after login
+$sql = "SELECT * FROM users WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+?>
+  
+  
   <nav class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
             <div class="container-fluid">
               <nav class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
@@ -222,9 +240,9 @@
                 </li>
 
                 <li class="nav-item topbar-user dropdown hidden-caret">
-                  <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="#" aria-expanded="false">
-                    <div class="avatar-sm">
-                      <img src="assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle" />
+                  <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" aria-expanded="false">
+                  <div class="avatar-sm">
+                        <img src="<?php echo htmlspecialchars($user['profile']); ?>" alt="..." class="avatar-img rounded-circle" />
                     </div>
                     <span class="profile-username">
                       <span class="op-7">Hi,</span>
@@ -238,9 +256,9 @@
                     <div class="dropdown-user-scroll scrollbar-outer">
                       <li>
                         <div class="user-box">
-                          <div class="avatar-lg">
-                            <img src="assets/img/profile.jpg" alt="image profile" class="avatar-img rounded" />
-                          </div>
+                        <div class="avatar-lg">
+                                    <img src="<?php echo htmlspecialchars($user['profile']); ?>" alt="image profile" class="avatar-img rounded" />
+                                </div>
                           <div class="u-text">
                           <?php 
                         // Display the username if it's set, otherwise show 'Guest'
