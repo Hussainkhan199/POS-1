@@ -24,11 +24,29 @@ function incrementVisitorCount($conn) {
         throw $e;
     }
 }
+
+function getUserCount($conn) {
+    $sql = "SELECT COUNT(*) AS count FROM users WHERE role = 'user'";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    return $row['count'];
+}
+
+function getAdminCount($conn) {
+    $sql = "SELECT COUNT(*) AS count FROM users WHERE role = 'admin'";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    return $row['count'];
+}
+
+
 // Increment visitor count
 incrementVisitorCount($conn);
 
 // Get visitor count
 $visitorCount = getVisitorCount($conn);
+$userCount = getUserCount($conn);
+$adminCount = getAdminCount($conn);
 
 ?>
 
@@ -65,7 +83,7 @@ $visitorCount = getVisitorCount($conn);
                     <div class="col col-stats ms-3 ms-sm-0">
                       <div class="numbers">
                         <p class="card-category">Subscribers</p>
-                        <h4 class="card-title">1303</h4>
+                        <h4 class="card-title"><?php echo number_format($userCount + $adminCount); ?></h4>
                       </div>
                     </div>
                   </div>
