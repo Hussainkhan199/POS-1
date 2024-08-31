@@ -45,16 +45,16 @@
               <h4 class="text-section">Components</h4>
             </li>
             <li class="nav-item">
-              <a data-bs-toggle="collapse" href="#base">
+              <a data-bs-toggle="collapse" href="#inventory">
                 <i class="fas fa-layer-group"></i>
-                <p>Base</p>
+                <p>Inventory</p>
                 <span class="caret"></span>
               </a>
-              <div class="collapse" id="base">
+              <div class="collapse" id="inventory">
                 <ul class="nav nav-collapse">
                   <li>
-                    <a href="components/avatars.html">
-                      <span class="sub-item">Avatars</span>
+                    <a href="products.php">
+                      <span class="sub-item">All Products</span>
                     </a>
                   </li>
                   <li>
