@@ -13,15 +13,19 @@ if (isset($_POST['login'])) {
     $hashed_password = md5($password);
 
     // Prepare and execute the SQL statement
-    $stmt = $conn->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
+    $stmt = $conn->prepare("SELECT id, username FROM users WHERE username = ? AND password = ?");
     $stmt->bind_param("ss", $username, $hashed_password);
 
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
+        // Fetch user data
+        $user = $result->fetch_assoc();
+
         // Login successful
-        $_SESSION['username'] = $username; // Set session variable
+        $_SESSION['user_id'] = $user['id']; // Set session variable for user ID
+        $_SESSION['username'] = $user['username']; // Set session variable for username
         $_SESSION['loggedin'] = true; // Optional: Set a logged-in status
 
         // Redirect to dashboard page
@@ -36,6 +40,7 @@ if (isset($_POST['login'])) {
     $conn->close();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -75,3 +80,4 @@ if (isset($_POST['login'])) {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+

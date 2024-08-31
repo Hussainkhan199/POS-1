@@ -83,7 +83,7 @@ if (isset($_POST['submit'])) {
                     </div>
                     <button type="submit" name="submit" class="btn btn-primary btn-block">Register</button>
                 </form>
-                <button type="button" class="btn btn-outline-success login"><a href="./login.php" >Login </a></button>
+                <button type="button" class="btn btn-outline-success login"><a href="login.php" >Login </a></button>
             </div>
         </div>
     </div>
