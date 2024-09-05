@@ -1,8 +1,10 @@
 <?php
-// Include the database configuration file
+session_start(); // Start the session
 include './config/database.php';
 
-session_start(); // Start the session
+// Debugging: Check if session is correctly started
+// Uncomment the following line if needed
+// print_r($_SESSION);
 
 if (isset($_POST['login'])) {
     // Get form data
@@ -14,8 +16,11 @@ if (isset($_POST['login'])) {
 
     // Prepare and execute the SQL statement
     $stmt = $conn->prepare("SELECT id, username FROM users WHERE username = ? AND password = ?");
-    $stmt->bind_param("ss", $username, $hashed_password);
+    if ($stmt === false) {
+        die('Prepare failed: ' . htmlspecialchars($conn->error));
+    }
 
+    $stmt->bind_param("ss", $username, $hashed_password);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -40,7 +45,6 @@ if (isset($_POST['login'])) {
     $conn->close();
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -80,4 +84,3 @@ if (isset($_POST['login'])) {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-
